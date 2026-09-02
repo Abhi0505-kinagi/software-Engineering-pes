@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your TrialMatch candidate profile.">
+  <title>Candidate Profile | TrialMatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="profile-page">
+  <header class="profile-header">
+    <a class="profile-brand" href="index.html" aria-label="TrialMatch home"><span class="brand-mark" aria-hidden="true">+</span> TrialMatch</a>
+    <a class="back-link" href="index.html">← Registration page</a>
+  </header>
+
+  <main class="profile-layout">
+    <aside class="profile-sidebar" aria-labelledby="profile-summary-title">
+      <div class="avatar" aria-hidden="true">AM</div>
+      <p class="eyebrow">Candidate profile</p>
+      <h1 id="profile-summary-title">Alex Morgan</h1>
+      <p class="profile-status"><span aria-hidden="true"></span> Profile active</p>
+      <p class="sidebar-copy">Keep your information current so TrialMatch can show you the most relevant studies.</p>
+      <div class="profile-completion">
+        <div><strong>Profile completeness</strong><span>75%</span></div>
+        <div class="progress-track"><span></span></div>
+        <small>Add your health interests to reach 100%.</small>
+      </div>
+    </aside>
+
+    <section class="profile-content" aria-labelledby="profile-title">
+      <div class="profile-title-row">
+        <div>
+          <p class="step-label">Account settings</p>
+          <h2 id="profile-title">Manage your profile</h2>
+          <p class="profile-subtitle">Your details help us find clinical trials that fit your needs.</p>
+        </div>
+        <span class="last-updated">Last updated today</span>
+      </div>
+
+      <form id="profile-form">
+        <fieldset>
+          <legend>Personal details</legend>
+          <div class="name-grid">
+            <label for="profile-first-name">First name
+              <input id="profile-first-name" name="firstName" type="text" value="Alex" autocomplete="given-name" required>
+            </label>
+            <label for="profile-last-name">Last name
+              <input id="profile-last-name" name="lastName" type="text" value="Morgan" autocomplete="family-name" required>
+            </label>
+          </div>
+          <div class="field-row">
+            <label for="profile-email">Email address
+              <input id="profile-email" name="email" type="email" value="alex@example.com" autocomplete="email" required>
+            </label>
+            <label for="profile-phone">Phone number
+              <input id="profile-phone" name="phone" type="tel" value="+1 555 018 2040" autocomplete="tel">
+            </label>
+          </div>
+          <div class="field-row">
+            <label for="profile-location">Location
+              <select id="profile-location" name="location">
+                <option>North America</option>
+                <option>Europe</option>
+                <option>Asia-Pacific</option>
+                <option>Other region</option>
+              </select>
+            </label>
+            <label for="profile-language">Preferred language
+              <select id="profile-language" name="language">
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Health interests</legend>
+          <p class="fieldset-help">Choose areas you would like to hear about. You can change these anytime.</p>
+          <div class="interest-grid">
+            <label class="interest-option"><input type="checkbox" name="interest" checked><span>Cardiology</span></label>
+            <label class="interest-option"><input type="checkbox" name="interest"><span>Diabetes</span></label>
+            <label class="interest-option"><input type="checkbox" name="interest" checked><span>Mental health</span></label>
+            <label class="interest-option"><input type="checkbox" name="interest"><span>Oncology</span></label>
+            <label class="interest-option"><input type="checkbox" name="interest"><span>Respiratory</span></label>
+            <label class="interest-option"><input type="checkbox" name="interest"><span>Women's health</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Communication preferences</legend>
+          <label class="checkbox-label preference-label" for="profile-updates">
+            <input id="profile-updates" name="updates" type="checkbox" checked>
+            <span><strong>Trial recommendations</strong><small>Notify me when a new study matches my profile.</small></span>
+          </label>
+          <label class="checkbox-label preference-label" for="profile-reminders">
+            <input id="profile-reminders" name="reminders" type="checkbox" checked>
+            <span><strong>Profile reminders</strong><small>Remind me when my profile needs a refresh.</small></span>
+          </label>
+        </fieldset>
+
+        <div class="profile-actions">
+          <button class="button-secondary" type="button" id="cancel-button">Cancel</button>
+          <button type="submit">Save changes <span aria-hidden="true">→</span></button>
+        </div>
+        <p id="profile-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script src="profile.js"></script>
+</body>
+</html>
