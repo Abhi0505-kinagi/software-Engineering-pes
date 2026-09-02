@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register to find clinical trials that may be right for you.">
+  <title>Join TrialMatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="intro-panel" aria-labelledby="intro-title">
+      <div class="brand-mark" aria-hidden="true">+</div>
+      <p class="eyebrow">TrialMatch</p>
+      <h1 id="intro-title">Take the next step in your care.</h1>
+      <p class="intro-copy">Create a private profile and discover clinical trials that match your health goals, location, and preferences.</p>
+
+      <div class="trust-list" aria-label="Registration benefits">
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">01</span>
+          <span><strong>Personalised matches</strong><small>Find studies suited to your profile.</small></span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">02</span>
+          <span><strong>Your choice, always</strong><small>Review details before sharing anything.</small></span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">03</span>
+          <span><strong>Private by design</strong><small>Your information stays protected.</small></span>
+        </div>
+      </div>
+
+      <p class="support-note">Already have an account? <a href="#">Sign in</a></p>
+    </section>
+
+    <section class="form-panel" aria-labelledby="form-title">
+      <div class="form-heading">
+        <p class="step-label">Step 1 of 1 <span>•</span> Your profile</p>
+        <h2 id="form-title">Create your account</h2>
+        <p>It takes about two minutes. You can update your details at any time.</p>
+      </div>
+
+      <form id="registration-form" novalidate>
+        <div class="name-grid">
+          <label for="first-name">First name <span>*</span>
+            <input id="first-name" name="firstName" type="text" autocomplete="given-name" placeholder="e.g. Alex" required>
+          </label>
+          <label for="last-name">Last name <span>*</span>
+            <input id="last-name" name="lastName" type="text" autocomplete="family-name" placeholder="e.g. Morgan" required>
+          </label>
+        </div>
+
+        <label for="email">Email address <span>*</span>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </label>
+
+        <label for="password">Create a password <span>*</span>
+          <input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required>
+        </label>
+
+        <div class="field-row">
+          <label for="date-of-birth">Date of birth <span>*</span>
+            <input id="date-of-birth" name="dateOfBirth" type="date" autocomplete="bday" required>
+          </label>
+          <label for="location">Location <span>*</span>
+            <select id="location" name="location" required>
+              <option value="">Choose a region</option>
+              <option>North America</option>
+              <option>Europe</option>
+              <option>Asia-Pacific</option>
+              <option>Other region</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="checkbox-label" for="updates">
+          <input id="updates" name="updates" type="checkbox">
+          <span>I would like to receive occasional updates about relevant clinical trials.</span>
+        </label>
+
+        <label class="checkbox-label" for="terms">
+          <input id="terms" name="terms" type="checkbox" required>
+          <span>I agree to the <a href="#">Terms of use</a> and <a href="#">Privacy policy</a>. <b>*</b></span>
+        </label>
+
+        <button type="submit">Create my profile <span aria-hidden="true">→</span></button>
+        <p class="form-footnote">By registering, you are not agreeing to join a trial. You decide what happens next.</p>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
