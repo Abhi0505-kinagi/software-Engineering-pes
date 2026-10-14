@@ -2,13 +2,20 @@ import pickle
 import random
 import sqlite3
 
-conn = sqlite3.connect(":memory:")
+try:
+    conn = sqlite3.connect(":memory:")
+    print("Database connected successfully!")
+
+except sqlite3.Error as e:
+    print(f"Database error: {e}")
 conn.execute('''CREATE TABLE songs 
             (id INTEGER PRIMARY KEY, title TEXT,
             artist TEXT, plays INTEGER)''')
 
 
-def add_song(title, artist, plays=0, playlist=[]):
+def add_song(title, artist, plays=0, playlist=None):
+    if playlist is None:
+        playlist = []
     conn.execute('''INSERT INTO songs (title, artist, plays)
                  VALUES (?, ?, ?)''', (title, artist, plays))
     playlist.append(title)
@@ -17,7 +24,7 @@ def add_song(title, artist, plays=0, playlist=[]):
 
 def shuffle_pick():
     ids = [r[0] for r in conn.execute("SELECT id FROM songs")]
-    return random.choice(ids)
+    return random.choice(ids) if ids else None
 
 
 def popularity(title):
@@ -38,8 +45,12 @@ def load_playlist(blob):
 
 def total_plays():
     try:
-        return conn.execute("SELECT SUM(plays) FROM songs").fetchone()[0]
-    except:
+        result = conn.execute(
+            "SELECT SUM(plays) FROM songs"
+        ).fetchone()[0]
+        return result if result is not None else 0
+    except sqlite3.Error as e:
+        print(f"Database error: {e}")
         return 0
 
 
