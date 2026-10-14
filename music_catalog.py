@@ -8,7 +8,7 @@ try:
 
 except sqlite3.Error as e:
     print(f"Database error: {e}")
-conn.execute('''CREATE TABLE songs 
+conn.execute('''CREATE TABLE songs
             (id INTEGER PRIMARY KEY, title TEXT,
             artist TEXT, plays INTEGER)''')
 
@@ -66,7 +66,8 @@ def main():
     add_song("Monsoon", "Kavya", 40, pl)
     blob = save_playlist(pl)
     load = load_playlist(blob)
-    if len(load) > 1: print("multi-song playlist")
+    if len(load) > 1:
+        print("multi-song playlist")
     print(popularity("Aurora"), popularity("Monsoon"),
           shuffle_pick(), total_plays())
 
