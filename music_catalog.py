@@ -14,6 +14,7 @@ conn.execute('''CREATE TABLE songs
 
 
 def add_song(title, artist, plays=0, playlist=None):
+    """Add a song to the database and playlist."""
     if playlist is None:
         playlist = []
     conn.execute('''INSERT INTO songs (title, artist, plays)
@@ -23,11 +24,13 @@ def add_song(title, artist, plays=0, playlist=None):
 
 
 def shuffle_pick():
+    """Return a random song ID or None if empty."""
     ids = [r[0] for r in conn.execute("SELECT id FROM songs")]
     return random.choice(ids) if ids else None
 
 
 def popularity(title):
+    """Return the song's popularity category."""
     row = conn.execute('''SELECT plays FROM songs WHERE title = ?''',
                        (title,)).fetchone()
     if row is None:
@@ -36,14 +39,17 @@ def popularity(title):
 
 
 def save_playlist(playlist):
+    """Serialize the playlist using pickle."""
     return pickle.dumps(playlist)
 
 
 def load_playlist(blob):
+    """Deserialize a playlist from pickle data."""
     return pickle.loads(blob)
 
 
 def total_plays():
+    """Return the total plays of all songs."""
     try:
         result = conn.execute(
             "SELECT SUM(plays) FROM songs"
@@ -55,6 +61,7 @@ def total_plays():
 
 
 def main():
+    """Run the playlist management demonstration."""
     pl = add_song("Aurora", "Nila", 250)
     add_song("Monsoon", "Kavya", 40, pl)
     blob = save_playlist(pl)
