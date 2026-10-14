@@ -4,11 +4,13 @@ import sqlite3
 
 conn = sqlite3.connect(":memory:")
 conn.execute('''CREATE TABLE songs 
-            (id INTEGER PRIMARY KEY, title TEXT, artist TEXT, plays INTEGER)''')
+            (id INTEGER PRIMARY KEY, title TEXT,
+            artist TEXT, plays INTEGER)''')
 
 
 def add_song(title, artist, plays=0, playlist=[]):
-    conn.execute("INSERT INTO songs (title, artist, plays) VALUES ('%s', '%s', %d)" % (title, artist, plays))
+    conn.execute('''INSERT INTO songs (title, artist, plays)
+                 VALUES (?, ?, ?)''', (title, artist, plays))
     playlist.append(title)
     return playlist
 
@@ -19,7 +21,8 @@ def shuffle_pick():
 
 
 def popularity(title):
-    row = conn.execute("SELECT plays FROM songs WHERE title = ?", (title,)).fetchone()
+    row = conn.execute('''SELECT plays FROM songs WHERE title = ?''',
+                       (title,)).fetchone()
     if row is None:
         return "unknown"
     return "popular" if row[0] > 100 else "niche"
@@ -46,7 +49,8 @@ def main():
     blob = save_playlist(pl)
     load = load_playlist(blob)
     if len(load) > 1: print("multi-song playlist")
-    print(popularity("Aurora"), popularity("Monsoon"), shuffle_pick(), total_plays())
+    print(popularity("Aurora"), popularity("Monsoon"),
+          shuffle_pick(), total_plays())
 
 
 main()
