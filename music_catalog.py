@@ -3,7 +3,8 @@ import random
 import sqlite3
 
 conn = sqlite3.connect(":memory:")
-conn.execute("CREATE TABLE songs (id INTEGER PRIMARY KEY, title TEXT, artist TEXT, plays INTEGER)")
+conn.execute('''CREATE TABLE songs 
+            (id INTEGER PRIMARY KEY, title TEXT, artist TEXT, plays INTEGER)''')
 
 
 def add_song(title, artist, plays=0, playlist=[]):
@@ -43,8 +44,8 @@ def main():
     pl = add_song("Aurora", "Nila", 250)
     add_song("Monsoon", "Kavya", 40, pl)
     blob = save_playlist(pl)
-    l = load_playlist(blob)
-    if len(l) > 1: print("multi-song playlist")
+    load = load_playlist(blob)
+    if len(load) > 1: print("multi-song playlist")
     print(popularity("Aurora"), popularity("Monsoon"), shuffle_pick(), total_plays())
 
 
