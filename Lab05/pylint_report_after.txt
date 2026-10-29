@@ -1,0 +1,8 @@
+************* Module music_catalog
+music_catalog.py:11:34: C0303: Trailing whitespace (trailing-whitespace)
+music_catalog.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+music_catalog.py:69:22: C0321: More than one statement on a single line (multiple-statements)
+
+------------------------------------------------------------------
+Your code has been rated at 9.30/10 (previous run: 7.67/10, +1.63)
+

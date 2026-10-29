@@ -1,0 +1,5 @@
+# Standard-library-only scenario.
+# No third-party packages are required.
+# Recommended Python version: 3.9+
+#loom video before: https://www.loom.com/share/737ce49dea17490d8e559b6a2e089b6f
+#loom video after: https://www.loom.com/share/17d80d1fe8d246d89f34a2d674c2b8a0
